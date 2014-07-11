@@ -1,0 +1,14 @@
+{
+  "name": "acorn2",
+  "version": "0.3.0",
+  "dependencies": {
+    "ember": "1.5.x",
+    "handlebars": "1.2.x",
+    "ember-data": "1.0.x",
+    "jquery": "2.1.x",
+    "requirejs": "2.1.x"
+  },
+  "devDependencies": {
+    "ember-qunit": "0.1.8"
+  }
+}

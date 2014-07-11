@@ -2,7 +2,9 @@
 var debug = require('debug')('acorn2');
 var app = require('../app');
 
-app.set('port', process.env.PORT || 3000);
+var config = require('../config');
+
+app.set('port', process.env.PORT || config.application.port);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
