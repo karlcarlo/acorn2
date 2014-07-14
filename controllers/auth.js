@@ -1,8 +1,7 @@
 var crypto = require('crypto'),
   config = require('../config');
 
-var check = require('validator').check,
-  sanitize = require('validator').sanitize;
+var validator = require('validator');
 
 var models = require('../models'),
   Person = models.Person;
@@ -37,28 +36,30 @@ exports.signin = function(req, res, next){
 
   var method = req.method.toLowerCase();
   if(method === 'get'){
+    res.locals.page_name = 'signin';
+    res.locals.hide_navbar = true;
     res.render('auth/signin');
     return;
   }
   if(method === 'post'){
-    var email = sanitize(req.body.email).trim()
-      , passwd = sanitize(req.body.passwd).trim();
+    var email = validator.trim(req.body.email)
+      , passwd = validator.trim(req.body.passwd);
     
+    res.locals.page_name = 'signin';
+    res.locals.hide_navbar = true;
     // 缓存用户名密码
-    res.locals({ 'email': email, 'passwd': passwd });
+    res.locals.email = email;
+    res.locals.passwd = passwd;
 
     // validators
     if(email === '' || passwd === ''){
-      res.app.locals.messages.push({type: 'alert', content: words.empty_email});
+      res.app.locals.messages.push({type: 'warn', content: words.empty_email});
       res.render('auth/signin');
       return;
     }
 
     if(email !== config.application.root_account){
-      try{
-        check(email).len(6, 40).isEmail();
-      }
-      catch(error){
+      if(!validator.isLength(email, 6, 40) || !validator.isEmail(email)){
         res.app.locals.messages.push({type: 'error', content: words.format_error_email});
         res.render('auth/signin');
         return;
@@ -97,7 +98,7 @@ exports.signin = function(req, res, next){
 
 exports.signout = function(req, res, next){
   req.session.regenerate(function(err){
-    res.app.locals.messages.push({type: 'alert', content: words.success_siginout});
+    res.app.locals.messages.push({type: 'info', content: words.success_siginout});
     res.clearCookie(config.cookie.name, {path: '/'});
     res.redirect('/signin');
   });

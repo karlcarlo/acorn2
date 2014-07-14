@@ -1,4 +1,19 @@
 {{!< default}}
-<section class="login-box js-login-box">
-
+<section data-action="signin" class="signin-box">
+  <form method="post" action="" class="forms signin-form">
+      <ul class="forms-inline-list">
+        <li>
+          <input type="email" name="email" placeholder="电子邮件" value="{{email}}" class="" />
+        </li>
+        <li>
+          <input type="password" name="passwd" placeholder="密码" class="" />
+        </li>
+        <li>
+          <button class="btn-blue">登录</button>
+        </li>       
+      </ul>
+      <section class="meta">
+        <a class="forgotten-password" href="/admin/forgotten/">忘记密码?</a>
+      </section>
+  </form>
 </section>

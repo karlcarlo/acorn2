@@ -1,8 +1,12 @@
+{{#if messages}}
 <aside id="notifications" class="notifications">
+  {{#each messages}}
   <div class="js-bb-notification">
-      <section class="notification notification- js-notification">
-        message
+      <section class="notification-{{type}}">
+        {{content}}
         <a class="close" href="#" data-id=""><span class="hidden">Close</span></a>
       </section>
   </div>
+  {{/each}}
 </aside>
+{{/if}}

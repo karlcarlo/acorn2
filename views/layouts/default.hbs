@@ -6,11 +6,16 @@
 
     <title>Acorn Blog</title>
 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/kube/kube.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/master.css">
+
 </head>
-<body>
+<body class="page-{{page_name}}">
 
     <div class="container">
+    {{#unless hide_navbar}}
         {{> navbar}}
+    {{/unless}}
         {{> notifications}}
         {{{body}}}
     </div>

@@ -18,6 +18,8 @@ var app = express();
 app.locals = {
   title: config.application.title,
   version: config.application.version,
+  page_name: 'home',
+  hide_navbar: false,
   messages: [],
   settings: {}
 };

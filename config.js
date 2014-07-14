@@ -5,7 +5,7 @@ module.exports = {
     name: "Acorn",
     host: '', // http://127.0.0.1/
     port: 3000,
-    root_account: 'root@localhost'
+    root_account: 'karlcarlo@163.com'
   },
   session: {
     secret: "acorn_blog"

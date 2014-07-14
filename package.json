@@ -16,6 +16,7 @@
     "static-favicon": "~1.0.0",
     "morgan": "~1.0.0",
     "debug": "~0.7.4",
+    "markdown": "0.5.x",
     "async": "*",
     "mongoose": "3.8.x",
     "validator": "3.16.x",
